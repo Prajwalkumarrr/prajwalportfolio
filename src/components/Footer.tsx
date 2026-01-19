@@ -39,11 +39,6 @@ const Footer = () => {
               <Mail className="w-5 h-5" />
             </a>
           </div>
-
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground flex items-center gap-1">
-            © {currentYear} Made with <Heart className="w-4 h-4 text-destructive" /> by Prajwal Kumar
-          </p>
         </div>
       </div>
     </footer>

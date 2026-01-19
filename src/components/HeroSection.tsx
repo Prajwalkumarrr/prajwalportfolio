@@ -59,16 +59,17 @@ const HeroSection = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-4"
             >
               Prajwal Kumar
-              <span className="gradient-text">,</span>
             </motion.h1>
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-2xl md:text-3xl font-display font-semibold gradient-text mb-6"
+              className="text-2xl md:text-3xl font-display font-semibold gradient-text mb-5"
             >
-              Full-Stack Developer
+              Full-Stack Developer,
+              AI & Machine Learning Enthusiast,
+              Data Analytics Enthusiast,
             </motion.h2>
 
             <motion.p
@@ -77,7 +78,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              Motivated Information Technology undergraduate with hands-on experience in full-stack development, AI-driven applications, and cloud technologies. Passionate about building scalable, high-performance software and real-world solutions.
+              Motivated Information Technology undergraduate with hands-on experience in full-stack development, AI-driven applications, and cloud technologies,Data Analytics. Passionate about building scalable, high-performance software and real-world solutions.
             </motion.p>
 
             <motion.div
@@ -101,7 +102,7 @@ const HeroSection = () => {
               className="flex items-center gap-4 mt-8 justify-center lg:justify-start"
             >
               <a
-                href="https://github.com/"
+                href="https://github.com/Prajwalkumarrr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
@@ -123,11 +124,11 @@ const HeroSection = () => {
                 <Mail className="w-5 h-5" />
               </a>
             </motion.div>
-          </motion.div>
+          </motion.div> 
 
           {/* Profile Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.2 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative flex-shrink-0"
@@ -141,7 +142,8 @@ const HeroSection = () => {
                 <img
                   src={profileImage}
                   alt="Prajwal Kumar"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transform translate-y-0"
+                  style={{ objectPosition: 'center 20%' }}
                 />
               </div>
 

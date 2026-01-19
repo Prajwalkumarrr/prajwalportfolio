@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { GraduationCap, MapPin, Calendar, Languages, Code2, Cloud, Brain } from 'lucide-react';
+import { GraduationCap, MapPin, Calendar, Languages, Code2, Cloud, Brain, BarChart3 } from 'lucide-react';
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -11,6 +11,7 @@ const AboutSection = () => {
     { icon: Code2, label: 'Full-Stack Development', color: 'text-primary' },
     { icon: Brain, label: 'AI & Machine Learning', color: 'text-accent' },
     { icon: Cloud, label: 'Cloud Technologies', color: 'text-primary' },
+    { icon: BarChart3, label: 'Data Analytics', color: 'text-primary' },
   ];
 
   return (
@@ -41,14 +42,14 @@ const AboutSection = () => {
             <div className="glass-card p-8 rounded-2xl">
               <h3 className="text-2xl font-display font-semibold mb-6">Who I Am</h3>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                I'm a B.Tech Information Technology student at CVR College of Engineering, Hyderabad, with a strong passion for Software Engineering, Full-Stack Development, AI, and Cloud technologies.
+                I'm a B.Tech Information Technology student at CVR College of Engineering, Hyderabad, with a strong passion for Software Engineering, Full-Stack Development, AI, and Cloud technologies,Data Analytics.
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 I'm adaptable, team-oriented, and have a strong communicator with a design-driven mindset. I thrive on building scalable, high-performance software solutions that make a real impact.
               </p>
 
               {/* Highlights */}
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-4 gap-5">
                 {highlights.map((item, index) => (
                   <motion.div
                     key={item.label}

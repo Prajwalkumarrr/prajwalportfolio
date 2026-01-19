@@ -64,7 +64,20 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="gap-2"
+            onClick={() => {
+              // This will trigger the download of your resume
+              const link = document.createElement('a');
+              link.href = '/resume.pdf';
+              link.download = 'Prajwal_Resume.pdf'; // This will be the filename when downloaded
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
+          >
             <Download className="w-4 h-4" />
             Resume
           </Button>

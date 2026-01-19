@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, Github, Sparkles, FileText, Bot, Brain } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, FileText, Bot, Brain, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const projects = [
@@ -16,6 +16,8 @@ const projects = [
       'Automated expense categorization',
       'Interactive data visualizations',
     ],
+    codeUrl: 'https://github.com/Prajwalkumarrr/AI-finacial-assistant',
+    demoUrl: 'https://finance-demo.example.com',
     color: 'from-primary to-accent',
   },
   {
@@ -29,7 +31,24 @@ const projects = [
       'PDF export functionality',
       'NLP-based section enhancement',
     ],
+    codeUrl: 'https://github.com/AnjithSuryaVamshi/Ai-Resume-Builder',
+    demoUrl: 'https://resume-builder.example.com',
     color: 'from-accent to-primary',
+  },
+  {
+    title: 'E-commerce Platform with AI Recommendations',
+    description: 'A full-featured e-commerce platform with AI-powered product recommendations and personalized shopping experience.',
+    icon: ShoppingCart,
+    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'TensorFlow.js'],
+    features: [
+      'AI-powered product recommendations',
+      'User authentication & authorization',
+      'Shopping cart & checkout',
+      'Order tracking system',
+    ],
+    codeUrl: 'https://github.com/yourusername/ecommerce-ai',
+    demoUrl: 'https://ecommerce-demo.example.com',
+    color: 'from-purple-500 to-pink-500',
   },
 ];
 
@@ -56,7 +75,7 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-4 max-w-9xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -114,14 +133,49 @@ const ProjectsSection = () => {
 
                 {/* Actions */}
                 <div className="flex gap-3">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Github className="w-4 h-4" />
-                    Code
-                  </Button>
-                  <Button size="sm" className="gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </Button>
+                  <a
+                    href={project.codeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 group/code"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(project.codeUrl, '_blank');
+                    }}
+                  >
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full gap-2 transition-all duration-300 hover:bg-primary/10 hover:scale-[1.02] hover:shadow-md relative overflow-hidden"
+                    >
+                      <Github className="w-4 h-4 transition-transform duration-300 group-hover/code:scale-110" />
+                      <span className="relative">
+                        Code
+                        <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/code:w-full"></span>
+                      </span>
+                    </Button>
+                  </a>
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 group/demo"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(project.demoUrl, '_blank');
+                    }}
+                  >
+                    <Button 
+                      size="sm" 
+                      className="w-full gap-2 transition-all duration-300 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg relative overflow-hidden"
+                    >
+                      <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover/demo:scale-110" />
+                      <span className="relative">
+                        Live Demo
+                        <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover/demo:w-full"></span>
+                      </span>
+                    </Button>
+                  </a>
                 </div>
               </div>
             </motion.div>

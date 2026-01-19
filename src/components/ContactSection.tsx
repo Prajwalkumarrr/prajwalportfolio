@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, ArrowRight, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -41,13 +42,48 @@ const ContactSection = () => {
     email: '',
     message: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
+    setIsLoading(true);
+
+    try {
+      // Replace these with your actual EmailJS service ID, template ID, and public key
+      const serviceId = 'service_sjzqobh';
+      const templateId = 'template_tgq7z37';
+      const publicKey = 'TV2W6oWSqMNM7ELMw';
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          to_name: 'Prajwal Kumar',
+          message: formData.message,
+          reply_to: formData.email
+        },
+        publicKey
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -141,7 +177,7 @@ const ContactSection = () => {
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="John Doe"
+                  placeholder="Name"
                   required
                   className="bg-secondary border-border"
                 />
@@ -156,7 +192,7 @@ const ContactSection = () => {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@example.com"
+                  placeholder="name@example.com"
                   required
                   className="bg-secondary border-border"
                 />
@@ -170,16 +206,25 @@ const ContactSection = () => {
                   id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell me about your project..."
+                  placeholder="example message"
                   rows={5}
                   required
                   className="bg-secondary border-border resize-none"
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full gap-2 glow-effect">
-                Send Message
-                <Send className="w-4 h-4" />
+              <Button type="submit" className="w-full md:w-auto" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="ml-2 h-4 w-4" />
+                  </>
+                )}
               </Button>
             </form>
           </motion.div>

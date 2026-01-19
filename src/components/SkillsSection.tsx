@@ -8,9 +8,9 @@ const skillCategories = [
     title: 'Programming Languages',
     icon: Terminal,
     skills: [
-      { name: 'JavaScript', level: 90 },
-      { name: 'Python', level: 85 },
-      { name: 'Java', level: 80 },
+      { name: 'JavaScript', level: 80 },
+      { name: 'Python', level: 80 },
+      { name: 'Java', level: 90 },
       { name: 'C', level: 75 },
     ],
   },
@@ -19,7 +19,7 @@ const skillCategories = [
     icon: Code,
     skills: [
       { name: 'React.js', level: 90 },
-      { name: 'Node.js', level: 85 },
+      { name: 'Node.js', level: 80 },
       { name: 'Express.js', level: 85 },
       { name: 'Flask', level: 75 },
       { name: 'RESTful APIs', level: 90 },
@@ -39,14 +39,14 @@ const skillCategories = [
     skills: [
       { name: 'Pandas', level: 80 },
       { name: 'Matplotlib', level: 75 },
-      { name: 'Google Gemini API', level: 85 },
+      { name: 'Google Gemini API', level: 75 },
     ],
   },
   {
     title: 'Tools & Platforms',
     icon: Wrench,
     skills: [
-      { name: 'Git & GitHub', level: 90 },
+      { name: 'Git & GitHub', level: 80 },
       { name: 'VS Code', level: 95 },
       { name: 'Postman', level: 85 },
       { name: 'Android Studio', level: 70 },
@@ -56,7 +56,7 @@ const skillCategories = [
     title: 'Design Tools',
     icon: Palette,
     skills: [
-      { name: 'Figma', level: 85 },
+      { name: 'Figma', level: 80 },
       { name: 'Canva', level: 90 },
     ],
   },

@@ -7,26 +7,21 @@ const experiences = [
   {
     title: 'Full Stack Developer Intern',
     company: 'ElevAIte Labs',
-    period: 'Dec 2025 – Present',
+    period: 'Jan 2024 – Present',
     description: [
-      'Developed the official company website from scratch',
-      'Implemented responsive UI with smooth animations and modern design',
-      'Worked on frontend + backend integration for seamless user experience',
-      'Built RESTful APIs and ensured system reliability and performance',
+      'ElevAIte Labs Website:',
+      '• Developed the official company website from scratch',
+      '• Implemented responsive UI with smooth animations and modern design',
+      '• Worked on frontend + backend integration for seamless user experience',
+      '• Built RESTful APIs and ensured system reliability and performance',
+      '',
+      'Beecho - Mobile App:',
+      '• Contributing to a platform connecting creators, brands, and event organizers',
+      '• Working on influencer discovery & collaboration features',
+      '• Improving app flow, UX, and feature stability'
     ],
     current: true,
-  },
-  {
-    title: 'Mobile App Developer',
-    company: 'Beeecho',
-    period: 'Ongoing',
-    description: [
-      'Contributing to a platform connecting creators, brands, and event organizers',
-      'Working on influencer discovery & collaboration features',
-      'Improving app flow, UX, and feature stability',
-    ],
-    current: true,
-  },
+  }
 ];
 
 const ExperienceSection = () => {
@@ -100,18 +95,36 @@ const ExperienceSection = () => {
                     )}
                   </div>
 
-                  <ul className={`space-y-2 text-muted-foreground text-sm ${
-                    index % 2 === 0 ? 'md:text-right' : ''
-                  }`}>
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className={`w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0 ${
-                          index % 2 === 0 ? 'md:order-1' : ''
-                        }`} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <ul className={`space-y-2 text-muted-foreground text-sm ${
+  index % 2 === 0 ? 'md:text-left' : ''
+}`}>
+  {exp.description.map((item, i) => {
+    if (item.endsWith(':')) {
+      return (
+        <li key={i} className="font-medium text-foreground mt-4 first:mt-0">
+          {item}
+        </li>
+      );
+    } else if (item.startsWith('•')) {
+      return (
+        <li key={i} className="flex items-start gap-2 group">
+          <span className="text-primary flex-shrink-0">•</span>
+          <span className="group-hover:text-foreground transition-colors">
+            {item.replace('•', '').trim()}
+          </span>
+        </li>
+      );
+    } else if (item === '') {
+      return <div key={i} className="h-4" />; // Add spacing between projects
+    }
+    return (
+      <li key={i} className="pl-4">
+        {item}
+      </li>
+    );
+  })}
+</ul> 
+
                 </div>
               </motion.div>
             ))}
